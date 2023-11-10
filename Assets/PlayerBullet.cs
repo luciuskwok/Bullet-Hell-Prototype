@@ -8,4 +8,13 @@ public class PlayerBullet : MonoBehaviour
     {
 		Destroy(gameObject);
     }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "boss")
+        {
+            Debug.Log("Hit Boss: " + collision.transform.name);
+            Destroy(this.gameObject);
+        }
+    }
 }
