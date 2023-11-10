@@ -7,7 +7,8 @@ public class PlayerControl : MonoBehaviour
 	public GameObject bullet;
 
 	private float playerSpeed = 10f;
-	private float gunHeat = 0;
+	private float gunSpeed = 8.0f;
+	private float gunHeat = 0.0f;
 
 	private float xMax = 3.0f;
 	private float xMin = -3.0f;
@@ -41,7 +42,7 @@ public class PlayerControl : MonoBehaviour
 	void FireBullet() {
 		if (gunHeat <= 0)
 		{
-			gunHeat = 0.25f;
+			gunHeat = 1.0f/gunSpeed;
 			Instantiate(bullet, transform.position, Quaternion.identity);
 		} else
         {
