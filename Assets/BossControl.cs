@@ -14,6 +14,8 @@ public class BossControl : MonoBehaviour
 	private float gunAngle = 0.0f;
 	private float bulletSpeed = 4.0f;
 
+	private int hitPoints = 8 * 60; // 8 shots/second for 60 seconds
+
 	void Start() {
 		InitializeFiringPattern();
 	}
@@ -101,7 +103,22 @@ public class BossControl : MonoBehaviour
 	}
 
 	void OnTriggerEnter2D(Collider2D collider) {
-		Debug.Log("Boss trigger");
+		string tag = collider.gameObject.tag;
+		if (tag == "Player") {
+			Debug.Log("Boss was hit by player");
+			DecreaseHitPoints(1);
+		} else if (tag == "PlayerBullet") {
+			Debug.Log("Boss was hit by player bullet");
+			DecreaseHitPoints(1);
+		}
 	}
+
+	void DecreaseHitPoints(int x) {
+		hitPoints -= x;
+		if (x <= 0) {
+			Debug.Log("Boss was defeated");
+			Destroy(this.gameObject);
+        }
+    }
 
 }

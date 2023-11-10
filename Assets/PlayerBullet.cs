@@ -8,14 +8,12 @@ public class PlayerBullet : MonoBehaviour
 		Destroy(gameObject);
 	}
 
-	void OnCollisionEnter2D(Collision2D collision) {
-		if (collision.gameObject.tag == "boss") {
-			Debug.Log("Player bullet collision: boss");
-			Destroy(this.gameObject);
-		}
-	}
 
 	void OnTriggerEnter2D(Collider2D collider) {
-		Debug.Log("Player bullet trigger");
+		// PlayerBullet instances should have "Is Trigger" checked, so they will only get OnTrigger events, and not OnCollision
+		if (collider.gameObject.tag == "Boss") {
+			//Debug.Log("Player bullet trigger");
+			Destroy(this.gameObject);
+		}
 	}
 }

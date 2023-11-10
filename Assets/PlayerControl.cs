@@ -43,22 +43,20 @@ public class PlayerControl : MonoBehaviour
 			//Debug.Log("Player fired bullet");
 		} else {
 			gunHeat -= Time.deltaTime;
-        }
-	}
-
-	void OnCollisionEnter2D(Collision2D collision) {
-		Debug.Log("Player collision");
+		}
 	}
 
 	void OnTriggerEnter2D(Collider2D collider) {
-		Debug.Log("Player trigger");
+		if (collider.gameObject.tag != "PlayerBullet") {
+			Debug.Log("Player has hit enemy or enemy bullet.");
+		}
 	}
 
 	// ## Utilities
 	// Apply minimum and maximum limits
 	float minMax(float x, float min, float max)
-    {
+	{
 		x = x > min ? x : min;
 		return x < max ? x : max;
-    }
+	}
 }
