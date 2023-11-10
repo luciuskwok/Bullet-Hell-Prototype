@@ -35,19 +35,26 @@ public class PlayerControl : MonoBehaviour
 
 	// Player fire bullets
 	void FireBullet() {
-		if (gunHeat <= 0)
-		{
+		if (gunHeat <= 0) {
 			gunHeat = 1.0f/gunSpeed;
 			GameObject bulletClone = Instantiate(bullet, transform.position, Quaternion.identity);
 			Rigidbody2D body = bulletClone.GetComponent<Rigidbody2D>();
 			body.velocity = new Vector3(0.0f, 10.0f, 0.0f);
-		} else
-        {
+			//Debug.Log("Player fired bullet");
+		} else {
 			gunHeat -= Time.deltaTime;
         }
 	}
 
+	void OnCollisionEnter2D(Collision2D collision) {
+		Debug.Log("Player collision");
+	}
 
+	void OnTriggerEnter2D(Collider2D collider) {
+		Debug.Log("Player trigger");
+	}
+
+	// ## Utilities
 	// Apply minimum and maximum limits
 	float minMax(float x, float min, float max)
     {

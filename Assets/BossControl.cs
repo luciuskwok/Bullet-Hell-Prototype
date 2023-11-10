@@ -14,7 +14,6 @@ public class BossControl : MonoBehaviour
 	private float gunAngle = 0.0f;
 	private float bulletSpeed = 4.0f;
 
-
 	void Start() {
 		InitializeFiringPattern();
 	}
@@ -95,6 +94,14 @@ public class BossControl : MonoBehaviour
 		float x = speed * Mathf.Cos(angleDeg*Mathf.PI/180.0f);
 		float y = speed * Mathf.Sin(angleDeg*Mathf.PI/180.0f);
 		return new Vector3(x, y, 0.0f);
+	}
+
+	void OnCollisionEnter2D(Collision2D collision) {
+		Debug.Log("Boss collision");
+	}
+
+	void OnTriggerEnter2D(Collider2D collider) {
+		Debug.Log("Boss trigger");
 	}
 
 }
