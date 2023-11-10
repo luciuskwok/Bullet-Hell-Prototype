@@ -15,11 +15,6 @@ public class PlayerControl : MonoBehaviour
 	private float yMax = 4.0f;
 	private float yMin = -4.0f;
 
-	// Start is called before the first frame update
-	void Start()
-	{
-		
-	}
 
 	// Update is called once per frame
 	void Update()
@@ -43,7 +38,9 @@ public class PlayerControl : MonoBehaviour
 		if (gunHeat <= 0)
 		{
 			gunHeat = 1.0f/gunSpeed;
-			Instantiate(bullet, transform.position, Quaternion.identity);
+			GameObject bulletClone = Instantiate(bullet, transform.position, Quaternion.identity);
+			Rigidbody2D body = bulletClone.GetComponent<Rigidbody2D>();
+			body.velocity = new Vector3(0.0f, 10.0f, 0.0f);
 		} else
         {
 			gunHeat -= Time.deltaTime;
