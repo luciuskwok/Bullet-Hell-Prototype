@@ -104,18 +104,16 @@ public class BossControl : MonoBehaviour
 
 	void OnTriggerEnter2D(Collider2D collider) {
 		string tag = collider.gameObject.tag;
-		if (tag == "Player") {
-			Debug.Log("Boss was hit by player");
-			DecreaseHitPoints(1);
-		} else if (tag == "PlayerBullet") {
-			Debug.Log("Boss was hit by player bullet");
+		if (tag == "PlayerBullet") {
+			//Debug.Log("Boss was hit by player bullet");
 			DecreaseHitPoints(1);
 		}
 	}
 
 	void DecreaseHitPoints(int x) {
 		hitPoints -= x;
-		if (x <= 0) {
+		Debug.Log("Boss HP: " + hitPoints);
+		if (hitPoints <= 0) {
 			Debug.Log("Boss was defeated");
 			Destroy(this.gameObject);
         }
