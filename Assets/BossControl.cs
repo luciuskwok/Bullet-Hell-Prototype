@@ -14,10 +14,15 @@ public class BossControl : MonoBehaviour
 	private float gunAngle = 0.0f;
 	private float bulletSpeed = 4.0f;
 
-	private int hitPoints = 8 * 60; // 8 shots/second for 60 seconds
+	private int hitPoints = 8 * 15; // 8 shots/second for 15 seconds
+	// should set this to 8 * 60 (1 minute) for the shipping version
+
+	private float hitCountdown = 0.0f;
+	private Color originalColor;
 
 	void Start() {
 		InitializeFiringPattern();
+		originalColor = Renderer().color;
 	}
 
 	void Update()
@@ -27,6 +32,15 @@ public class BossControl : MonoBehaviour
 			FireBullets();
 		} else {
 			gunHeat -= Time.deltaTime;
+		}
+
+		// Color change if hit
+		if (hitCountdown > 0.0f) {
+			hitCountdown -= Time.deltaTime;
+			if(hitCountdown <= 0.0f) {
+				Renderer().color = originalColor;
+				hitCountdown = 0.0f;
+			}
 		}
 	}
 
@@ -112,11 +126,22 @@ public class BossControl : MonoBehaviour
 
 	void DecreaseHitPoints(int x) {
 		hitPoints -= x;
-		Debug.Log("Boss HP: " + hitPoints);
+		//Debug.Log("Boss HP: " + hitPoints);
+
+		// Update the boss HP bar/readout, if needed
+
+		// Visual indication that boss was hit
+		Renderer().color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
+		hitCountdown = 1.0f/20.0f;
+
+		// Check if boss is dead
 		if (hitPoints <= 0) {
 			Debug.Log("Boss was defeated");
 			Destroy(this.gameObject);
         }
     }
 
+    SpriteRenderer Renderer() {
+    	return GetComponent<SpriteRenderer>();
+    }
 }
