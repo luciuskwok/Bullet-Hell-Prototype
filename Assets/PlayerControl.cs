@@ -15,6 +15,13 @@ public class PlayerControl : MonoBehaviour
 	private float yMax = 4.0f;
 	private float yMin = -4.0f;
 
+	private float hitCountdown = 0.0f;
+	private Color originalColor;
+
+
+	void Start() {
+		originalColor = GetComponent<SpriteRenderer>().color;
+	}
 
 	// Update is called once per frame
 	void Update()
@@ -30,6 +37,15 @@ public class PlayerControl : MonoBehaviour
 		// Player shooting
 		if (Input.GetKey(KeyCode.Space)) {
 			FireBullet();
+		}
+
+		// Countdown for color change if hit
+		if (hitCountdown > 0.0f) {
+			hitCountdown -= Time.deltaTime;
+			if(hitCountdown <= 0.0f) {
+				GetComponent<SpriteRenderer>().color = originalColor;
+				hitCountdown = 0.0f;
+			}
 		}
 	}
 
@@ -49,6 +65,10 @@ public class PlayerControl : MonoBehaviour
 	void OnTriggerEnter2D(Collider2D collider) {
 		if (collider.gameObject.tag != "PlayerBullet") {
 			Debug.Log("Player has hit enemy or enemy bullet.");
+			
+			// Visual indication that player was hit
+			GetComponent<SpriteRenderer>().color = new Color(1.0f, 0.0f, 0.0f, 1.0f);
+			hitCountdown = 1.0f/20.0f;
 		}
 	}
 
