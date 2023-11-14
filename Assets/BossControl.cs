@@ -5,6 +5,7 @@ using UnityEngine;
 public class BossControl : MonoBehaviour
 {
 	public GameObject bullet;
+	public BossHealthBar healthBar;
 
 	private float gunSpeed = 2.0f;
 	private float gunHeat = 0.0f;
@@ -14,7 +15,9 @@ public class BossControl : MonoBehaviour
 	private float gunAngle = 0.0f;
 	private float bulletSpeed = 4.0f;
 
-	private int hitPoints = 8 * 15; // 8 shots/second for 15 seconds
+	private const int InitialMaxHitPoints = 8 * 30; // 8 shots/second for 30 seconds
+	private int maxHitPoints = InitialMaxHitPoints;
+	private int hitPoints = InitialMaxHitPoints;
 	// should set this to 8 * 60 (1 minute) for the shipping version
 
 	private float hitCountdown = 0.0f;
@@ -128,7 +131,8 @@ public class BossControl : MonoBehaviour
 		hitPoints -= x;
 		//Debug.Log("Boss HP: " + hitPoints);
 
-		// Update the boss HP bar/readout, if needed
+		// Update the boss HP bar/readout
+		healthBar.UpdateHealthBar(hitPoints, maxHitPoints);
 
 		// Visual indication that boss was hit
 		Renderer().color = new Color(1.0f, 1.0f, 1.0f, 1.0f);

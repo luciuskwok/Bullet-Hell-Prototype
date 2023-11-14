@@ -68,7 +68,7 @@ public class PlayerControl : MonoBehaviour
 			
 			// Visual indication that player was hit
 			GetComponent<SpriteRenderer>().color = new Color(1.0f, 0.0f, 0.0f, 1.0f);
-			hitCountdown = 1.0f/20.0f;
+			hitCountdown = 1.0f/4.0f;
 		}
 	}
 
