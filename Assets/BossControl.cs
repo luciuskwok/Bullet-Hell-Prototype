@@ -13,7 +13,7 @@ public class BossControl : MonoBehaviour
 	private int currentPattern = 0;
 	private int patternCountdown = 0;
 	private float gunAngle = 0.0f;
-	private float bulletSpeed = 4.0f;
+	private float bulletSpeed = 6.0f;
 
 	private const int InitialMaxHitPoints = 8 * 30; // 8 shots/second for 30 seconds
 	private int maxHitPoints = InitialMaxHitPoints;

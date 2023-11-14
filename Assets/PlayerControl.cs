@@ -10,10 +10,10 @@ public class PlayerControl : MonoBehaviour
 	private float gunSpeed = 8.0f;
 	private float gunHeat = 0.0f;
 
-	private float xMax = 3.0f;
-	private float xMin = -3.0f;
-	private float yMax = 4.0f;
-	private float yMin = -4.0f;
+	private float xMax = 8.5f;
+	private float xMin = -8.5f;
+	private float yMax = 8.5f;
+	private float yMin = -8.5f;
 
 	private float hitCountdown = 0.0f;
 	private Color originalColor;
@@ -55,7 +55,7 @@ public class PlayerControl : MonoBehaviour
 			gunHeat = 1.0f/gunSpeed;
 			GameObject bulletClone = Instantiate(bullet, transform.position, Quaternion.identity);
 			Rigidbody2D body = bulletClone.GetComponent<Rigidbody2D>();
-			body.velocity = new Vector3(0.0f, 10.0f, 0.0f);
+			body.velocity = new Vector3(0.0f, 16.0f, 0.0f);
 			//Debug.Log("Player fired bullet");
 		} else {
 			gunHeat -= Time.deltaTime;
