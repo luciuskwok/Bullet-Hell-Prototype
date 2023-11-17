@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 18261358}
   - component: {fileID: 18261357}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: ButtonText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -180,7 +180,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Start Game
+  m_text: Return to Title
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -270,7 +270,7 @@ GameObject:
   - component: {fileID: 234347889}
   - component: {fileID: 234347888}
   m_Layer: 5
-  m_Name: NewGameButton
+  m_Name: Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -340,9 +340,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1612722732}
-        m_TargetAssemblyTypeName: TitleScreenControl, Assembly-CSharp
-        m_MethodName: LoadGameplayScene
+      - m_Target: {fileID: 1612722734}
+        m_TargetAssemblyTypeName: GameOverSceneControl, Assembly-CSharp
+        m_MethodName: LoadTitleScene
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -536,7 +536,7 @@ GameObject:
   - component: {fileID: 557803915}
   - component: {fileID: 557803914}
   m_Layer: 5
-  m_Name: TitleImage
+  m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -581,7 +581,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 953a11d6a6dcc4f12bf1ce1ac785b499, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ce12a2b14e379417baf1f1f0d5693be6, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -611,7 +611,7 @@ GameObject:
   - component: {fileID: 583006232}
   - component: {fileID: 583006231}
   m_Layer: 0
-  m_Name: Title Camera
+  m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -872,26 +872,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1612722733}
-  - component: {fileID: 1612722732}
+  - component: {fileID: 1612722734}
   m_Layer: 0
-  m_Name: TitleScreenControl
+  m_Name: GameOverScreenControl
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1612722732
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1612722731}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 63955c0b7afd948f39ca1a046c4f4a91, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &1612722733
 Transform:
   m_ObjectHideFlags: 0
@@ -907,6 +895,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1612722734
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1612722731}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47e983ae6133c432a81d238e59f21bbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
