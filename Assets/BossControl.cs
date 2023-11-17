@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class BossControl : MonoBehaviour
 {
@@ -142,10 +143,16 @@ public class BossControl : MonoBehaviour
 		if (hitPoints <= 0) {
 			Debug.Log("Boss was defeated");
 			Destroy(this.gameObject);
+			LoadMissionCompleteScene();
         }
     }
 
     SpriteRenderer Renderer() {
     	return GetComponent<SpriteRenderer>();
     }
+
+	public void LoadMissionCompleteScene() {
+		SceneManager.LoadScene("CompletionScene");
+	}
+
 }
